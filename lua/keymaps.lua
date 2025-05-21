@@ -48,4 +48,25 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+--start a browser-sync for Live Reloading
+--vim.api.nvim_set_keymap('n', '<leader>l', ':!browser-sync start --server --files "*.html, *.css, *.js"<CR>', { noremap = true })
+--
+vim.keymap.set('n', '<leader>l', function()
+  vim.loop.spawn('kitty', {
+    args = {
+      '--',
+      'bash',
+      '-c',
+      "browser-sync start --server --files '*.html, *.css, *.js'; exec bash",
+    },
+    detached = true,
+  }, function(code, signal)
+    if code ~= 0 then
+      print('Live server exited with code ' .. code .. ' (signal ' .. signal .. ')')
+    end
+  end)
+end, { desc = 'Start Live Server in New Terminal' })
+vim.keymap.set('n', '<leader>k', function()
+  os.execute 'pkill -f browser-sync'
+end, { desc = 'Kill Live Server' })
 -- vim: ts=2 sts=2 sw=2 et
