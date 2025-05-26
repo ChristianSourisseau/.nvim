@@ -45,7 +45,12 @@ require('lazy').setup({
 
   require 'plugins/treesitter',
 
+  --require 'plugins/avante',
+
+  require 'plugins.smear_cursor',
+
   require 'plugins.tmux-navigation',
+
   require 'plugins.colorful-winsep',
   -- The following comments only work if you have downloaded the repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
