@@ -66,6 +66,7 @@ vim.keymap.set('n', '<leader>l', function()
     end
   end)
 end, { desc = 'Start Live Server in New Terminal' })
+
 vim.keymap.set('n', '<leader>k', function()
   os.execute 'pkill -f browser-sync'
 end, { desc = 'Kill Live Server' })
